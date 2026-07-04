@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enelytiq Services Limited | IT Consulting</title>
+	<link rel="icon" type="<link rel="icon" type="image/png" href="C:/Users/dayor/OneDrive/Desktop/enelytiq/Favicon.png">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* --- Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(10, 25, 47, 0.4) 0%, rgba(10, 25, 47, 0) 100%);
+	    border-bottom: none;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+	.logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+       .logo span {
+            color: #3498db;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 650;
+	    text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* --- Section Layouts --- */
+        section {
+            padding: 100px 20px 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #1a365d;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+            margin: 10px auto 0 auto;
+        }
+
+        /* --- Auto-Scrolling Hero Section --- */
+        #home {
+            color: white;
+            overflow: hidden;
+            background-color: #0f2043;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+	    margin-top: 0;
+	    padding-top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+	    opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        /* Dark high-tech overlay for readability */
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(15, 32, 67, 0.85), rgba(26, 54, 93, 0.85)100%); 
+        }
+
+        .slide.active {
+          opacity: 6;
+        }
+
+	/*.slide-caption {
+  		position: absolute;
+  		bottom: 20px;
+  		left: 20px;
+  		color: #ffffff;
+  		background: rgba(0, 0, 0, 0.6); /* Translucent dark background for readability */
+  		padding: 15px;
+  		border-radius: 4px;
+  		max-width: 500px;
+		}
+	*/
+        #home h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        #home p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            max-width: 700px;
+            color: #e2e8f0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+      /* --- About Section --- */
+        #about {
+            background:  radial-gradient(circle,rgba(42, 123, 155, 1) 0%, 
+			rgba(87, 199, 133, 1) 100%, rgba(237, 221, 83, 1) 91%);
+        }
+
+        #about p {
+            max-width: 700px;
+            font-size: 24px;
+            margin-top: 20px;
+	    text-align: left;
+        }
+
+        /* --- Services Section --- */
+        #services {
+            background: radial-gradient(circle,rgba(42, 123, 155, 1) 0%, 
+			rgba(87, 199, 133, 1) 100%, rgba(237, 221, 83, 1) 91%);;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 45px;
+            width: 100%;
+        }
+
+        .service-box {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+            border-top: 4px solid transparent;
+        }
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-top: 4px solid #3498db;
+        }
+
+        .service-box h3 {
+            margin-bottom: 15px;
+            color: #1a365d;
+            font-size: 22px;
+        }
+
+        .service-box p {
+            color: #718096;
+            font-size: 15px;
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            background: radial-gradient(circle,rgba(42, 123, 155, 1) 0%, 
+			rgba(87, 199, 133, 1) 100%, rgba(237, 221, 83, 1) 91%);
+        }
+     #contact p {
+            max-width: 700px;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 550px;
+            margin: 40px auto 0 auto;
+        }
+
+        input, textarea {
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            background: #f7fafc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            background: #fff;
+        }
+
+        form .btn {
+            border: none;
+            cursor: pointer;
+        }
+	.site-footer
+        {
+            background: #0f2043;
+            color: #a0aec0;
+            text-align: center;
+            padding: 80px 70px;
+            font-size: 14px;
+        }
+
+	.footer-container {
+  		display: flex;
+  		flex-wrap: wrap;
+  		justify-content: space-between;
+  		max-width: 1200px;
+  		margin: 0 auto;
+		}
+
+	.footer-column {
+ 		 flex: 1;
+  		min-width: 250px;
+ 		 margin-bottom: 20px;
+		}
+
+	.footer-column h3 {
+  		border-bottom: 0px solid #444;
+  		padding-bottom: 10px;
+  		margin-bottom: 15px;
+ 		 font-size: 18px;
+		}
+
+	.footer-column address {
+  		font-style: normal;
+ 		 line-height: 1.6;
+		}
+
+	.footer-column a {
+  		color: #3498db;
+  		text-decoration: none;
+		}
+
+	.footer-column a:hover {
+ 		 text-decoration: underline;
+		}
+
+	.social-links a {
+ 		/* display: inline-block;*/
+		/*border: 1px solid #ddd;*/
+		/*border-radius: 50%;*/ /* Makes them perfectly round circles */
+ 		margin-right: 15px;
+ 		color: #ffffff;
+              	font-size: 24px; /* Adjust size of icons */
+             	color: #ffffff;    /* #333; Default icon color */
+  		text-decoration: none;
+		/*background: #ffffff;*/
+  		transition: transform 0.2s ease, color 0.2s ease;
+		}
+     .facebook:hover { color: #1877F2; }
+     .x-twitter:hover { color: #000000; }
+     .instagram:hover { color: #E4405F; }
+     .linkedin:hover { color: #0077B5; }
+     .youtube:hover { color: #F53827; }
+     .whatsapp:hover { color: #38F527; }
+
+	.footer-bottom {
+  		text-align: center;
+ 		margin-top: 30px;
+  		padding-top: 20px;
+  		border-top: 0px solid #444;
+  		font-size: 14px;
+  		color: #aaa;
+		}
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            #home h1 { font-size: 36px; }
+            .nav-links { display: none; } 
+        }
+   .social-container {
+  	display: flex;
+  	gap: 20px;
+  	justify-content: center;
+  	align-items: center;
+  	padding: 20px;
+	}
+
+   /* Hover effects for specific brands */
+  .social-link:hover {
+       transform: translateY(-3px); /* Subtle lift effect */
+	}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="nav-container">
+	<a href="#home" class="logo">Enelytiq</a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                
+                <li><a href="#services">Services</a></li>
+		<li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Auto-Scrolling IT Header -->
+    <section id="home">                                
+
+        <div class="hero-slider">
+            <!-- Carefully picked IT consulting, data analytics, and corporate tech imagery -->
+            <div class="slide active" style="background-image: url('C:/Users/dayor/OneDrive/Desktop/enelytiq/VisualizationBanner.png'); auto=format&fit=crop&w=1920&q=80"></div>
+            <div class="slide" style="background-image: url('C:/Users/dayor/OneDrive/Desktop/enelytiq/Cloud solutionBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('C:/Users/dayor/OneDrive/Desktop/enelytiq/BI Banner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+	    <div class="slide" style="background-image: url('C:/Users/dayor/OneDrive/Desktop/enelytiq/Competitive edge.png?auto=format&fit=crop&w=1920&q=80');"></div>
+	   <div class="slide" style="background-image: url('C:/Users/dayor/OneDrive/Desktop/enelytiq/AnalyticsBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+
+        <div class="container">
+            <h1>Empowering Business Through Intelligent IT Solutions</h1>
+            <a href="#services" class="btn">Explore Our Services</a>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-box">
+		<img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Visualization1.png" alt="Visualization1" auto=format&fit=crop&w=300&q=80">
+                    <h3>Data Visualization</h3>
+                    <p>Convert row-and-column data configurations into vivid interactive dashboards. We craft visual models that simplify trend recognition and decision-making.</p>
+                </div>
+
+                <div class="service-box">
+		<img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Data Analytics.png" alt="Data Analytics" auto=format&fit=crop&w=200&q=80">
+                    <h3>Data Analytics</h3>
+                    <p>Uncover patterns hidden beneath granular metrics. We utilize statistical forecasting and telemetry models to derive accurate business answers.</p>
+                </div>
+
+                <div class="service-box">
+		<img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Strategic Planing.png" alt="Strategic Planing" auto=format&fit=crop&w=100&q=70">
+                    <h3>IT Strategic Consulting</h3>
+                    <p>Align engineering roadmaps with corporate milestones. We evaluate current infrastructure models to accelerate system workflows and decrease overhead costs.</p>
+                </div>
+
+                <div class="service-box">
+		<img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Business Intelligence.png" alt="Business Intelligence" auto=format&fit=crop&w=300&q=80">
+                    <h3>Business Intelligence</h3>
+                    <p>Construct end-to-end processing layers that report critical operational cycles cleanly, putting high-impact data points directly into executive dashboards.</p>
+                </div>
+
+                <div class="service-box">
+		  <img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Cloud Solutions1.png" alt="Cloud Solutions" auto=format&fit=crop&w=300&q=80">
+                    <h3>Cloud Solutions</h3>
+                    <p>Migrate legacy architectures into high-availability cloud frameworks securely, managing deployment scaling, automated clustering, and robust threat mitigation.</p>
+                </div>
+
+                <div class="service-box">
+		<img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Data Management.png" alt="Data Management" auto=format&fit=crop&w=300&q=80">
+                    <h3>Data Management</h3>
+                    <p>Enforce data lineage pipeline validation, warehousing protocols, and multi-tier compliance parameters to store data assets with strict integrity.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+  <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Who We Are</h2>
+            <p>Enelytiq Services Limited is dedicated to transforming raw organizational data into a strategic asset for enterprise innovation, data strategy and actionable insights to empower businesses like yours to make data-driven,  	       informed decisions for sustainable growth. By leveraging cutting-edge cloud environments and enterprise analytics platforms—including Microsoft Fabric, Azure Data Services, and Power BI—we bridge the gap between complex 		technology and actionable business intelligence. From foundational data management to stunning, executive-ready report design, enelytiq services delivers scalable, secure, and future-proof solutions tailored to your 		unique business objectives.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <p>Ready to deploy analytics infrastructure that shifts your industry position? Tell us about your system goals.</p>
+            <form action="#" method="POST">
+		<input type="text" name="name" placeholder="Full Name" required>
+                <input type="text" name="name" placeholder="Company Name" required>
+                <input type="email" name="email" placeholder="Corporate Email Address" required>
+                <textarea name="message" rows="5" placeholder="Outline your IT consultation project details..." required></textarea>
+                <button type="submit" class="btn">Request Consultation</button>
+            </form>
+        </div>
+    </section>
+
+  <footer class="site-footer">
+  <div class="footer-container">
+    
+    <!-- Column 1: Address -->
+    <div class="footer-column">
+      <h3>Canada Address</h3>
+      <address>
+        94 Whitehorn Crescent<br>
+        Winnipeg, MB R3X 0W6<br>
+        Canada
+      </address>
+    </div>
+    <!-- Column 2: Address -->
+    <div class="footer-column">
+    <h3>Nigeria Address</h3>
+      <address>
+        F/42 Ogotun Afa<br>
+        Okeagbe Akoko<br>
+        Ondo State Nigeria
+      </address>
+    </div>
+    <!-- Column 3: Contacts -->
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+  
+</a>
+      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@enelytiq.com">info@enelytiq.com</a></p>
+      <p><i class="fa-solid fa-phone"></i> <a href="tel:+12048092469">+1 204-809-2469</a></p>
+      <p><i class="fa-solid fa-phone"></i> <a href="tel:+2348135831736">+234-813-583-1736</a></p>
+    </div>
+
+ <!-- Column 4: Social Media -->
+    <div class="footer-column">
+      <h3>Follow Us</h3>
+      <div class="social-links">
+    <a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" class="social-links x-twitter">
+    <i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+    <i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+    <i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+    <i class="fa-brands fa-linkedin-in"></i></a>
+     <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+     <i class="fa-brands fa-youtube"></i></a>
+    <a href="https://whatsapp.com/dl/" target="_blank" rel="noopener noreferrer" class="social-link whatsapp">
+     <i class="fa-brands fa-whatsapp"></i></a>
+        <!--a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" aria-label="X">X</a--->
+        <!---a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Facebook.png"></a--->
+        <!---a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a--->
+        <!--a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a--->
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2026 Enelytiq Services Limited. All rights reserved.</p>
+  </div>
+</footer>
+    <!-- Footer -->
+
+    <!-- JavaScript for Auto Scroll / Carousel -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        const slideInterval = 5000; // Rotates every 5 seconds
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, slideInterval);
+    </script>
+
+</body>
+</html>
