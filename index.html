@@ -67,7 +67,6 @@
             text-decoration: none;
             color: #ffffff;
             font-weight: 650;
-	    text-transform: uppercase;
             transition: color 0.3s;
         }
 
@@ -161,7 +160,7 @@
   		bottom: 20px;
   		left: 20px;
   		color: #ffffff;
-  		background: rgba(0, 0, 0, 0.6); /* Translucent dark background for readability */
+  		background: rgba(0, 0, 0, 0.6); /* Translucent dark background for readability 
   		padding: 15px;
   		border-radius: 4px;
   		max-width: 500px;
@@ -341,8 +340,8 @@
 		/*border-radius: 50%;*/ /* Makes them perfectly round circles */
  		margin-right: 15px;
  		color: #ffffff;
-              	font-size: 24px; /* Adjust size of icons */
-             	color: #ffffff;    /* #333; Default icon color */
+        font-size: 24px; /* Adjust size of icons */
+        color: #ffffff;    /* #333; Default icon color */
   		text-decoration: none;
 		/*background: #ffffff;*/
   		transition: transform 0.2s ease, color 0.2s ease;
@@ -363,15 +362,47 @@
   		color: #aaa;
 		}
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            #home h1 { font-size: 36px; }
-            .nav-links { display: flex;
-			flex-direction: column;
-			gap: 15px;
-			width: 100%;
-	 } 
+        /* Default desktop view */
+        .hamburger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
         }
+
+        /* Mobile view */
+        @media (max-width: 768px) {
+
+            #home h1 {
+                font-size: 36px;
+            }
+
+            .hamburger {
+                display: block;
+                color: white;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                padding: 15px;
+                margin-top: 10px;
+            }
+
+                .nav-links.show {
+                    display: flex;
+                }
+
+                .nav-links li {
+                    margin: 10px 0;
+                }
+
+                .nav-links a {
+                    color: white;
+                    text-decoration: none;
+                }
+        }
+
    .social-container {
   	display: flex;
   	gap: 20px;
@@ -384,82 +415,75 @@
   .social-link:hover {
        transform: translateY(-3px); /* Subtle lift effect */
 	}
-
     </style>
 </head>
 <body>
-
     <!-- Navigation Bar -->
     <header>
         <nav class="nav-container">
-	<a href="#home" class="logo">Enelytiq</a>
-            
-            <ul class="nav-links">
+            <a href="#home" class="logo">Enelytiq</a>
+
+            <div class="hamburger" id="hamburger">☰</div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
-                
                 <li><a href="#services">Services</a></li>
-		<li><a href="#about">About</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
     </header>
-
     <!-- Auto-Scrolling IT Header -->
-    <section id="home">                                
-
+    <section id="home">
         <div class="hero-slider">
             <!-- Carefully picked IT consulting, data analytics, and corporate tech imagery -->
             <div class="slide active" style="background-image: url('images/VisualizationBanner.png'); auto =format&fit=crop&w=1920&q=80"></div>
             <div class="slide" style="background-image: url('images/Cloud solutionBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
-            <div class="slide" style="background-image: url('images/BI Banner.png?auto=format&fit=crop&w=1920&q=80'); "></div>
-	    <div class="slide" style="background-image: url('images/Competitive edge.png?auto=format&fit=crop&w=1920&q=80');"></div>
-	   <div class="slide" style="background-image: url('images/AnalyticsBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/BI Banner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/Competitive edge.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/AnalyticsBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
         </div>
-
         <div class="container">
             <h1>Empowering Business Through Intelligent IT Solutions</h1>
             <a href="#services" class="btn">Explore Our Services</a>
         </div>
     </section>
-
-
     <!-- Services Section -->
     <section id="services">
         <div class="container">
             <h2>Our Expertise</h2>
             <div class="services-grid">
                 <div class="service-box">
-		<img src="images/Visualization1.png" alt="Visualization1" auto=format&fit=crop&w=300&q=80">
+                    <img src="images/Visualization1.png" alt="Visualization1" auto=format&fit =crop&w =300&q =80">
                     <h3>Data Visualization</h3>
                     <p>Convert row-and-column data configurations into vivid interactive dashboards. We craft visual models that simplify trend recognition and decision-making.</p>
                 </div>
 
                 <div class="service-box">
-		<img src="images/Data Analytics.png" alt="Data Analytics" auto=format&fit=crop&w=200&q=80">
+                    <img src="images/Data Analytics.png" alt="Data Analytics" auto=format&fit =crop&w =200&q =80">
                     <h3>Data Analytics</h3>
                     <p>Uncover patterns hidden beneath granular metrics. We utilize statistical forecasting and telemetry models to derive accurate business answers.</p>
                 </div>
 
                 <div class="service-box">
-		<img src="images/Strategic Planing.png" alt="Strategic Planing" auto=format&fit=crop&w=100&q=70">
+                    <img src="images/Strategic Planing.png" alt="Strategic Planing" auto=format&fit =crop&w =100&q =70">
                     <h3>IT Strategic Consulting</h3>
                     <p>Align engineering roadmaps with corporate milestones. We evaluate current infrastructure models to accelerate system workflows and decrease overhead costs.</p>
                 </div>
 
                 <div class="service-box">
-		<img src="images/Business Intelligence.png" alt="Business Intelligence" auto=format&fit=crop&w=300&q=80">
+                    <img src="images/Business Intelligence.png" alt="Business Intelligence" auto=format&fit =crop&w =300&q =80">
                     <h3>Business Intelligence</h3>
                     <p>Construct end-to-end processing layers that report critical operational cycles cleanly, putting high-impact data points directly into executive dashboards.</p>
                 </div>
 
                 <div class="service-box">
-		  <img src="images/Cloud Solutions1.png" alt="Cloud Solutions" auto=format&fit=crop&w=300&q=80">
+                    <img src="images/Cloud Solutions1.png" alt="Cloud Solutions" auto=format&fit =crop&w =300&q =80">
                     <h3>Cloud Solutions</h3>
                     <p>Migrate legacy architectures into high-availability cloud frameworks securely, managing deployment scaling, automated clustering, and robust threat mitigation.</p>
                 </div>
 
                 <div class="service-box">
-		<img src="images/Data Management.png" alt="Data Management" auto=format&fit=crop&w=300&q=80">
+                    <img src="images/Data Management.png" alt="Data Management" auto=format&fit =crop&w =300&q =80">
                     <h3>Data Management</h3>
                     <p>Enforce data lineage pipeline validation, warehousing protocols, and multi-tier compliance parameters to store data assets with strict integrity.</p>
                 </div>
@@ -468,7 +492,7 @@
         </div>
     </section>
 
-  <!-- About Section -->
+    <!-- About Section -->
     <section id="about">
         <div class="container">
             <h2>Who We Are</h2>
@@ -481,91 +505,88 @@
         <div class="container">
             <h2>Connect With Us</h2>
             <p>Ready to deploy analytics infrastructure that shifts your industry position? Tell us about your system goals.</p>
-            <form action="#" method="POST">
-		<input type="text" name="name" placeholder="Full Name" required>
-                <input type="text" name="name" placeholder="Company Name" required>
+            <form action="https://formspree.io/f/xjgnboba" method="POST" id="contactForm">
+                <!-- Honeypot field (spam protection) -->
+                <input type="text" name="_gotcha" style="display:none">
+                <input type="text" name="full_name" placeholder="Full Name" required>
+                <input type="text" name="company_name" placeholder="Company Name" required>
                 <input type="email" name="email" placeholder="Corporate Email Address" required>
                 <textarea name="message" rows="5" placeholder="Outline your IT consultation project details..." required></textarea>
+                <!-- Redirect after success -->
+                <input type="hidden" name="_redirect" value="https://enelytiq.com/thank-you.html">
                 <button type="submit" class="btn">Request Consultation</button>
+                <!-- Success message popup -->
+                <p id="successMessage" style="display:none; color:green; margin-top:10px;">
+                    Your message has been sent successfully. We’ll reach out shortly.
+                </p>
             </form>
+
         </div>
     </section>
 
-  <footer class="site-footer">
-  <div class="footer-container">
-    
-    <!-- Column 1: Address -->
-    <div class="footer-column">
-      <h3>Canada Address</h3>
-      <address>
-        94 Whitehorn Crescent<br>
-        Winnipeg, MB R3X 0W6<br>
-        Canada
-      </address>
-    </div>
-    <!-- Column 2: Address -->
-    <div class="footer-column">
-    <h3>Nigeria Address</h3>
-      <address>
-        F/42 Ogotun Afa<br>
-        Okeagbe Akoko<br>
-        Ondo State Nigeria
-      </address>
-    </div>
-    <!-- Column 3: Contacts -->
-    <div class="footer-column">
-      <h3>Contact Us</h3>
-  
-</a>
-      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@enelytiq.com">info@enelytiq.com</a></p>
-      <p><i class="fa-solid fa-phone"></i> <a href="tel:+12048092469">+1 204-809-2469</a></p>
-      <p><i class="fa-solid fa-phone"></i> <a href="tel:+2348135831736">+234-813-583-1736</a></p>
-    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
 
- <!-- Column 4: Social Media -->
-    <div class="footer-column">
-      <h3>Follow Us</h3>
-      <div class="social-links">
-    <a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" class="social-links x-twitter">
-    <i class="fa-brands fa-x-twitter"></i></a>
-    <a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link facebook">
-    <i class="fa-brands fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" class="social-link instagram">
-    <i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
-    <i class="fa-brands fa-linkedin-in"></i></a>
-     <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link youtube">
-     <i class="fa-brands fa-youtube"></i></a>
-    <a href="https://whatsapp.com/dl/" target="_blank" rel="noopener noreferrer" class="social-link whatsapp">
-     <i class="fa-brands fa-whatsapp"></i></a>
-        <!--a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" aria-label="X">X</a--->
-        <!---a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Facebook.png"></a--->
-        <!---a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a--->
-        <!--a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a--->
-    </div>
-  </div>
+            <!-- Column 1: Address -->
+            <div class="footer-column">
+                <h3>Canada Address</h3>
+                <address>
+                    94 Whitehorn Crescent<br>
+                    Winnipeg, MB R3X 0W6<br>
+                    Canada
+                </address>
+            </div>
+            <!-- Column 2: Address -->
+            <div class="footer-column">
+                <h3>Nigeria Address</h3>
+                <address>
+                    F/42 Ogotun Afa<br>
+                    Okeagbe Akoko<br>
+                    Ondo State Nigeria
+                </address>
+            </div>
+            <!-- Column 3: Contacts -->
+            <div class="footer-column">
+                <h3>Contact Us</h3>
 
-  <!-- Footer Bottom -->
-  <div class="footer-bottom">
-    <p>&copy; 2026 Enelytiq Services Limited. All rights reserved.</p>
-  </div>
-</footer>
-    <!-- Footer -->
-
-    <!-- JavaScript for Auto Scroll / Carousel -->
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-        const slideInterval = 5000; // Rotates every 5 seconds
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, slideInterval);
-    </script>
-
+                </a>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@enelytiq.com">info@enelytiq.com</a></p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+12048092469">+1 204-809-2469</a></p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+2348135831736">+234-813-583-1736</a></p>
+            </div>
+            <!-- Column 4: Social Media -->
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" class="social-links x-twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://whatsapp.com/dl/" target="_blank" rel="noopener noreferrer" class="social-link whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <!--a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" aria-label="X">X</a--->
+                    <!---a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="C:/Users/dayor/OneDrive/Desktop/enelytiq/Facebook.png"></a--->
+                    <!---a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a--->
+                    <!--a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a--->
+                </div>
+            </div>
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Enelytiq Services Limited. All rights reserved.</p>
+            </div>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
