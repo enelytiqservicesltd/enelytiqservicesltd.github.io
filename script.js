@@ -50,3 +50,51 @@ form.addEventListener("submit", async (e) => {
         alert("Network error. Please try again.");
     }
 });
+    document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".hero-slider .slide");
+    const dots = document.querySelectorAll(".slider-dots .dot");
+    let currentSlide = 0;
+    let slideTimer;
+    const slideInterval = 5000;
+
+    // Function to update visual elements to a specific slide index
+    function goToSlide(index) {
+        // Remove active status from current items
+        slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
+
+    // Set new current index
+    currentSlide = index;
+
+    // Add active status to new items
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+        }
+
+    function nextSlide() {
+        let nextIndex = (currentSlide + 1) % slides.length;
+    goToSlide(nextIndex);
+        }
+
+    // Starts or resets the auto-rotation interval
+    function startTimer() {
+        clearInterval(slideTimer);
+    slideTimer = setInterval(nextSlide, slideInterval);
+        }
+
+        // Click event listener for indicator dots
+        dots.forEach(dot => {
+        dot.addEventListener("click", function () {
+            const targetIndex = parseInt(this.getAttribute("data-index"));
+            if (targetIndex !== currentSlide) {
+                goToSlide(targetIndex);
+                startTimer(); // Reset timer so image doesn't instantly flip away
+            }
+        });
+        });
+
+    // Initialize timer loop on page load
+    startTimer();
+    });
+
+

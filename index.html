@@ -30,7 +30,7 @@
             left: 0;
             width: 100%;
             background: linear-gradient(to bottom, rgba(10, 25, 47, 0.4) 0%, rgba(10, 25, 47, 0) 100%);
-	    border-bottom: none;
+	        border-bottom: none;
             z-index: 1000;
         }
 
@@ -112,16 +112,18 @@
         /* --- Auto-Scrolling Hero Section --- */
         #home {
             color: white;
-            overflow: hidden;
+            overflow: vissible;
             background-color: #0f2043;
+            position: relative;
+            height: 100vh;
         }
 
         .hero-slider {
             position: absolute;
             top: 0;
             left: 0;
-	    margin-top: 0;
-	    padding-top: 0;
+	        margin-top: 0;
+	        padding-top: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
@@ -136,7 +138,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-	    opacity: 0;
+	        opacity: 0;
             transition: opacity 1.2s ease-in-out;
         }
 
@@ -152,8 +154,35 @@
         }
 
         .slide.active {
-          opacity: 6;
+          opacity: 1;
         }
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10; /* Ensures dots sit above the background overlay */
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            /* Style for the active slide dot */
+            .dot.active, .dot:hover {
+                background-color: #ffffff;
+                transform: scale(1.2);
+                box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            }
+
 
 	/*.slide-caption {
   		position: absolute;
@@ -206,7 +235,7 @@
             max-width: 700px;
             font-size: 24px;
             margin-top: 20px;
-	    text-align: left;
+	        text-align: left;
         }
 
         /* --- Services Section --- */
@@ -381,7 +410,7 @@
                 color: white;
             }
 
-           .nav-links {
+            .nav-links {
                 display: none;
                 flex-direction: column;
                 padding: 5px 0; /* reduced spacing */
@@ -400,7 +429,7 @@
                 .nav-links a {
                     color: white;
                     text-decoration: none;
-					padding: 5px 0; /* small vertical padding */
+                    padding: 5px 0; /* small vertical padding */
                 }
         }
 
@@ -423,7 +452,6 @@
     <header>
         <nav class="nav-container">
             <a href="#home" class="logo">Enelytiq</a>
-
             <div class="hamburger" id="hamburger">☰</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
@@ -437,11 +465,19 @@
     <section id="home">
         <div class="hero-slider">
             <!-- Carefully picked IT consulting, data analytics, and corporate tech imagery -->
-            <div class="slide active" style="background-image: url('images/VisualizationBanner.png'); auto =format&fit=crop&w=1920&q=80"></div>
+            <div class="slide active" style="background-image: url('images/VisualizationBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
             <div class="slide" style="background-image: url('images/Cloud solutionBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
             <div class="slide" style="background-image: url('images/BI Banner.png?auto=format&fit=crop&w=1920&q=80');"></div>
             <div class="slide" style="background-image: url('images/Competitive edge.png?auto=format&fit=crop&w=1920&q=80');"></div>
             <div class="slide" style="background-image: url('images/AnalyticsBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        <!-- ADD THIS: Indicator Dots Container -->
+        <div class="slider-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
         </div>
         <div class="container">
             <h1>Empowering Business Through Intelligent IT Solutions</h1>
@@ -488,9 +524,11 @@
                     <h3>Data Management</h3>
                     <p>Enforce data lineage pipeline validation, warehousing protocols, and multi-tier compliance parameters to store data assets with strict integrity.</p>
                 </div>
+
             </div>
         </div>
     </section>
+
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -498,6 +536,7 @@
             <p>Enelytiq Services Limited is dedicated to transforming raw organizational data into a strategic asset for enterprise innovation, data strategy and actionable insights to empower businesses like yours to make data-driven,  	       informed decisions for sustainable growth. By leveraging cutting-edge cloud environments and enterprise analytics platforms—including Microsoft Fabric, Azure Data Services, and Power BI—we bridge the gap between complex 		technology and actionable business intelligence. From foundational data management to stunning, executive-ready report design, enelytiq services delivers scalable, secure, and future-proof solutions tailored to your 		unique business objectives.</p>
         </div>
     </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -518,12 +557,13 @@
                     Your message has been sent successfully. We’ll reach out shortly.
                 </p>
             </form>
+
         </div>
     </section>
     <footer class="site-footer">
         <div class="footer-container">
-            <!-- Column 1: Address -->
-             <div class="footer-column">
+                <!-- Column 1: Address -->
+                <div class="footer-column">
                     <h3>Canada</h3>
                     <p><i class="fa-solid fa-location-dot"></i> <a href="https://www.google.com/maps?q=Winnipeg,+Canada" target="_blank">Winnipeg, Canada</a></p>
                 </div>
@@ -532,36 +572,42 @@
                     <h3>Nigeria</h3>
                     <p><i class="fa-solid fa-location-dot"></i> <a href="https://www.google.com/maps?q=Lagos,+Nigeria">Lagos, Nigeria</a></p>
                 </div>
-            <!-- Column 3: Contacts -->
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@enelytiq.com">info@enelytiq.com</a></p>
-                <p><i class="fa-solid fa-phone"></i> <a href="tel:+12048092469">+1 204-809-2469</a></p>
-                <p><i class="fa-solid fa-phone"></i> <a href="tel:+2348135831736">+234-813-583-1736</a></p>
-            </div>
-            <!-- Column 4: Social Media -->
-            <div class="footer-column">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" class="social-links x-twitter">
-                        <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link facebook">
-                        <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" class="social-link instagram">
-                        <i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
-                        <i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link youtube">
-                        <i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://whatsapp.com/dl/" target="_blank" rel="noopener noreferrer" class="social-link whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i></a>
-                 </div>
-            </div>
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <p>&copy; 2026 Enelytiq Services Limited. All rights reserved.</p>
-            </div>
-    </footer>
+                <!-- Column 3: Contacts -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@enelytiq.com">info@enelytiq.com</a></p>
+                    <p><i class="fa-solid fa-phone"></i> <a href="tel:+12048092469">+1 204-809-2469</a></p>
+                    <p><i class="fa-solid fa-phone"></i> <a href="tel:+2348135831736">+234-813-583-1736</a></p>
+                </div>
+                <!-- Column 4: Social Media -->
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://x.com/enelytiq?s=11" target="_blank" rel="noopener noreferrer" class="social-links x-twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1Evj7McSJe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/enelytiq?igsh=aGlpcXlrbXJkaXF6" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://whatsapp.com/dl/" target="_blank" rel="noopener noreferrer" class="social-link whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Enelytiq Services Limited. All rights reserved.</p>
+                </div>
+</footer>
     <script src="script.js"></script>
 </body>
 </html>
