@@ -112,10 +112,13 @@
         /* --- Auto-Scrolling Hero Section --- */
         #home {
             color: white;
-            overflow: vissible;
+            overflow: hidden;
             background-color: #0f2043;
             position: relative;
             height: 100vh;
+			height: 100dvh; /* Dynamic viewport height for modern mobile devices */
+            width: 100%;
+            transform: translate3d(0, 0, 0)
         }
 
         .hero-slider {
@@ -139,7 +142,11 @@
             background-position: center;
             background-repeat: no-repeat;
 	        opacity: 0;
-            transition: opacity 1.2s ease-in-out;
+           /* transition: opacity 1.2s ease-in-out;*/
+			visibility: hidden;
+			will-change: opacity, visibility;
+            /* FIX: Keep transitions fluid across mobile platforms */
+            transition: opacity 1200ms ease-in-out, visibility 1200ms ease-in-out;
         }
 
         /* Dark high-tech overlay for readability */
@@ -155,6 +162,7 @@
 
         .slide.active {
           opacity: 1;
+		  visibility: visible;
         }
         .slider-dots {
             position: absolute;
